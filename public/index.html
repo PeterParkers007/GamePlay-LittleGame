@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>2048</title>
+  <style>
+    #boot-loader{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#050510;color:#f0f0ff;font-family:system-ui,sans-serif;gap:16px}
+    #boot-loader .spinner{width:44px;height:44px;border:3px solid rgba(124,92,255,.2);border-top-color:#7c5cff;border-radius:50%;animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="boot-loader"><div class="spinner"></div><p id="boot-msg">正在加载...</p></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div id="flash-overlay" class="flash-overlay" aria-hidden="true"></div>
+  <div id="shake-layer"><div class="app">
+    <header class="header"><div class="logo-block"><h1 class="logo">2048</h1><p class="tagline">合并 · 超越 · 登顶</p></div>
+    <div class="header-actions"><button id="sound-toggle" class="icon-btn" aria-label="sound"><svg class="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg><svg class="icon-sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button><button id="new-game-btn" class="btn btn-primary">新游戏</button></div></header>
+    <div id="combo-display" class="combo-display hidden">COMBO x<span id="combo-count">2</span></div>
+    <div class="stats-row"><div class="stat-card"><span class="stat-label">得分</span><span id="score" class="stat-value">0</span></div><div class="stat-card"><span class="stat-label">最佳</span><span id="best-score" class="stat-value">0</span></div><div class="stat-card highlight"><span class="stat-label">最大方块</span><span id="max-tile" class="stat-value">2</span></div></div>
+    <main class="game-area"><div id="board" class="board"><div class="board-glow"></div><div class="grid-bg"></div><div id="tiles-layer" class="tiles-layer"></div><div id="merge-effects" class="merge-effects"></div></div><p class="hint">方向键 / WASD / 滑动 移动方块</p></main>
+    <aside class="sidebar"><div class="player-card"><span class="player-label">你的代号</span><span id="player-name" class="player-name">...</span><button id="rename-btn" class="link-btn">换一个</button></div><div class="leaderboard"><div class="lb-header"><h2>排行榜</h2><span id="lb-count" class="lb-count">0 局</span></div><ol id="leaderboard-list" class="lb-list"></ol></div></aside>
+  </div></div>
+  <div id="overlay" class="overlay hidden"><div class="modal"><div id="overlay-icon" class="modal-icon">✨</div><h2 id="overlay-title">游戏结束</h2><p id="overlay-score" class="modal-score">0 分</p><p id="overlay-rank" class="modal-rank"></p><div class="modal-actions"><button id="overlay-retry" class="btn btn-primary btn-lg">再来一局</button><button id="overlay-close" class="btn btn-ghost">继续查看</button></div></div></div>
+  <div id="toast" class="toast hidden"></div>
+  <script src="/js/audio.js" defer></script><script src="/js/fx.js" defer></script><script src="/js/game.js" defer></script><script src="/js/leaderboard.js" defer></script><script src="/js/app.js" defer></script>
+</body></html>

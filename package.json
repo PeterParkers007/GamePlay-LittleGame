@@ -1,0 +1,14 @@
+{
+  "name": "2048-game",
+  "version": "1.0.0",
+  "description": "Premium 2048 game with LAN multiplayer leaderboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "open-firewall": "powershell -ExecutionPolicy Bypass -File scripts/open-firewall.ps1"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
